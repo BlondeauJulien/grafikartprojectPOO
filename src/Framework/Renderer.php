@@ -6,6 +6,7 @@ class Renderer {
   const DEFAULT_NAMESPACE = '__MAIN';
 
   private $paths = [];
+  private $globals = [];
 
   public function addPath(string $namespace, ?string $path = null): void 
   {
@@ -16,7 +17,7 @@ class Renderer {
     }
   }
 
-  public function render(string $view): string 
+  public function render(string $view, array $params = []): string 
   {
     if($this->hasNamespace($view)) {
       $path = $this->replaceNameSpace($view) . '.php';
@@ -26,8 +27,16 @@ class Renderer {
     }
     
     ob_start();
+    $renderer = $this;
+    extract($this->globals);
+    extract($params);
     require($path);
     return ob_get_clean();
+  }
+
+  public function addGlobal(string $key, $value):void 
+  {
+    $this->globals[$key] = $value;
   }
 
   private function hasNamespace(string $view): bool 
