@@ -15,14 +15,14 @@ class RendererTest extends TestCase {
   }
 
   public function testRenderTheRightPath() {
-    $this->renderer->addPath('blog', __DIR__ . 'views');
-    $content = $this->render('@blog/demo');
-    $this.assertEquals('Salut les gens', $content);
+    $this->renderer->addPath('blog', __DIR__ . '/views');
+    $content = $this->renderer->render('@blog/demo');
+    $this->assertEquals('Salut les gens', $content);
   }
 
   public function testRenderTheDefaultPath() {
-    $this->renderer->addPath(__DIR__ . 'views');
-    $content = $this->render('demo');
-    $this.assertEquals('Salut les gens', $content);
+    $this->renderer->addPath(__DIR__ . '/views');
+    $content = $this->renderer->render('demo');
+    $this->assertEquals('Salut les gens', $content);
   }
 }
