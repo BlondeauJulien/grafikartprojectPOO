@@ -23,7 +23,7 @@ class PHPRenderer implements RendererInterface
     }
 
     /**
-     * Permet de rajouter un chemin pour charger les vues
+     * Permet de rajouter un chamin pour charger les vues
      * @param string $namespace
      * @param null|string $path
      */

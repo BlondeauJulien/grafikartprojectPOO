@@ -8,14 +8,14 @@ class TwigRenderer implements RendererInterface
 
     private $loader;
 
-    public function __construct(string $path)
+    public function __construct(\Twig_Loader_Filesystem $loader, \Twig_Environment $twig)
     {
-        $this->loader = new \Twig_Loader_Filesystem($path);
-        $this->twig = new \Twig_Environment($this->loader, []);
+        $this->loader = $loader;
+        $this->twig = $twig;
     }
 
     /**
-     * Permet de rajouter un chemin pour charger les vues
+     * Permet de rajouter un chamin pour charger les vues
      * @param string $namespace
      * @param null|string $path
      */
